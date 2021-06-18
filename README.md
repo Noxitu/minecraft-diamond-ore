@@ -27,3 +27,8 @@ Download from https://www.minecraft.net/en-us/download/server
 ### /noxitu/minecraft/map/blocks.json
 Generate using `java -cp minecraft_server.jar net.minecraft.data.Main --all`
 Read more: https://wiki.vg/Data_Generators
+
+# Important missing features:
+ - There is no timeout for generation; I am pretty certain that if you were to run it long enough it would get stuck on generation,
+ - Maybe increasing server view distance would increase size of initial world generation,
+ - Probably running in offline mode makes more sense.
