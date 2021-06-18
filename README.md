@@ -1,5 +1,7 @@
 Generated seeds between `1` and `12` using 1.17 and 1.16.5. For each seed server was started, generated initial 23x23 chunks and then stopped.
 
+On my laptop it took about 2 minutes to process single seed.
+
 # 1.17
 ![Distribution in 1.17](docs/1.17.png)
 
