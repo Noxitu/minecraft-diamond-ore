@@ -5,11 +5,20 @@ On my laptop it took about 2 minutes to process single seed.
 # 1.17
 ![Distribution in 1.17](docs/1.17.png)
 
+#### Raw data
+
+    [   0  394  788 1189 1608 1859 1760 1850 1895 1754 1851 1864 1711 1704 1669 1010  251    0    0    0]
+
+Total of 23157 diamonds.
+
 # 1.16.5
 ![Distribution in 1.16.5](docs/1.16.5.png)
 
 #### Raw data
-[   0  434  806 1171 1673 2120 2008 2044 2047 2162 2025 1965 2074 1841  840  134    0    0    0    0]
+
+    [   0  434  806 1171 1673 2120 2008 2044 2047 2162 2025 1965 2074 1841  840  134    0    0    0    0]
+
+Total of 23344 diamonds.
 
 # Required files:
 ### /jars/minecraft_server.{version}.jar

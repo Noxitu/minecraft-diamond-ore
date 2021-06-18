@@ -12,7 +12,8 @@ from noxitu.minecraft.map.global_palette import BLOCKS, GLOBAL_PALETTE
 from display import display_diamonds
 
 
-DIAMOND_ORE_MASK = np.array([name == 'minecraft:diamond_ore' for name in GLOBAL_PALETTE], dtype=bool)
+DIAMOND_ORE_MASK = np.array([name in ('minecraft:diamond_ore',) for name in GLOBAL_PALETTE], dtype=bool)
+DIAMOND_ORE2_MASK = np.array([name in ('minecraft:deepslate_diamond_ore',) for name in GLOBAL_PALETTE], dtype=bool)
 
 
 def compute_range(chunks):
@@ -52,6 +53,7 @@ def unpack_section(section_data, palette):
 def extract_diamonds(path, seed=0):
     loaded_chunks = []
     all_diamonds = []
+    all_diamonds2 = []
 
     for chunk_file in tqdm(os.listdir(path)):
         try:
@@ -135,14 +137,21 @@ def extract_diamonds(path, seed=0):
 
             all_diamonds.extend(diamond_list)
 
+            diamond_mask = DIAMOND_ORE2_MASK[chunk.reshape(256, 16, 16)]
+            diamond_list = np.argwhere(diamond_mask) + [0, 16*z, 16*x]
+
+            all_diamonds2.extend(diamond_list)
+
     diamonds = np.array(all_diamonds)
-    print(f'Found {len(diamonds)} diamond ores:')
+    diamonds2 = np.array(all_diamonds2)
+    print(f'Found {len(diamonds) + len(diamonds2)} diamond ores:')
 
     _, zs, xs = compute_range(loaded_chunks)
 
     os.makedirs('diamonds', exist_ok=True)
     np.savez(f'diamonds/{seed}.npz',
         diamonds=diamonds,
+        diamonds2=diamonds2,
         xs=xs,
         zs=zs
     )
